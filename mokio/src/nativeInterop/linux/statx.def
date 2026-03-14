@@ -1,3 +1,0 @@
-package = platform.linuxx
-headers = linux/stat.h sys/syscall.h
-compilerOpts = -I/usr/include

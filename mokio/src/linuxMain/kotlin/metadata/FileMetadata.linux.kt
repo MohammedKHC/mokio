@@ -23,7 +23,7 @@ import kotlinx.cinterop.alloc
 import kotlinx.cinterop.memScoped
 import kotlinx.cinterop.ptr
 import okio.Path
-import platform.linuxx.*
+import okio.internal.linux.*
 import platform.posix.*
 import kotlin.time.Instant
 
@@ -38,7 +38,7 @@ private fun statx(
 ): FileMetadata? = memScoped {
     val statx = alloc<statx>()
     val result = syscall(
-        SYS_statx.toLong(),
+        __NR_statx.toLong(),
         AT_FDCWD,
         path.toString(),
         if (followLinks) 0 else AT_SYMLINK_NOFOLLOW,
@@ -103,6 +103,3 @@ private fun stat(
 
 private fun statx_timestamp.toInstant() =
     Instant.fromEpochSeconds(tv_sec, tv_nsec.toLong())
-
-private const val AT_FDCWD = -100
-private const val AT_SYMLINK_NOFOLLOW = 0x100

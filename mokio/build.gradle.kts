@@ -1,7 +1,5 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinNativeCompile
-import org.jetbrains.kotlin.konan.target.Family
 import java.net.URI
 
 plugins {
@@ -31,13 +29,6 @@ kotlin {
             defFile(file("src/nativeInterop/mingw/reparse_data_buffer.def"))
         }
     }
-    targets.withType<KotlinNativeTarget>()
-        .matching { it.konanTarget.family == Family.LINUX }
-        .configureEach {
-            compilations["main"].cinterops.create("statx") {
-                defFile(file("src/nativeInterop/linux/statx.def"))
-            }
-        }
 
     @OptIn(ExperimentalKotlinGradlePluginApi::class)
     applyDefaultHierarchyTemplate {
