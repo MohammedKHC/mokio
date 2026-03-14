@@ -1,8 +1,8 @@
 [versions]
-agp = "9.0.0"
+agp = "9.1.0"
 androidx-test = "1.7.0"
 kotlin = "2.3.10"
-okio = "3.16.4"
+okio = "3.17.0"
 
 [libraries]
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidx-test" }

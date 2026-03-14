@@ -12,7 +12,7 @@ plugins {
 
 kotlin {
     jvm()
-    androidLibrary {
+    android {
         namespace = "com.mohammedkhc.io"
         compileSdk = 36
         minSdk = 23
